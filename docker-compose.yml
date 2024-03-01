@@ -1,0 +1,53 @@
+# https://docs.docker.com/compose/compose-file/compose-file-v3/
+# 使用的版本
+version: '3'
+# 要启动的服务
+services:
+  lego-mongo:
+    # 使用的镜像
+    image: mongo
+    # 容器名称
+    container_name: lego-mongo
+    # 数据卷（数据持久化），路径映射 => 主机路径:容器路径
+    volumes:
+      - '.docker-volumes/mongo/data:/data/db'
+      # $PWD 是一个全局变量，指代当前目录，可以通过在控制台打印：echo $PWD
+      - '$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/'
+    # 端口：主机/容器
+    ports:
+      - 27017:27017
+    # 从指定的文件中读取环境变量
+    env_file:
+      - .env
+    # 配置环境变量
+    # environment:
+    #   # 在运行项目之前，先创建一个 root 账户
+    #   # 会自动获取下面的特定名称的环境变量
+    #   - MONGO_INITDB_ROOT_USERNAME=admin
+    #   - MONGO_INITDB_ROOT_PASSWORD=pass
+  lego-redis:
+    image: redis:6
+    container_name: lego-redis
+    # > 为要执行的命令的占位符，--requirepass ${REDIS_PASSWORD} 会自动填入后面
+    command: >
+      --requirepass ${REDIS_PASSWORD}
+    ports:
+      - 6379:6379
+    env_file:
+      - .env
+  lego-backend:
+    # 依赖的服务：应该会先启动依赖的服务，然后再启动当前服务
+    depends_on:
+      - lego-mongo
+      - lego-redis
+    # 构建
+    build:
+      # 上下文
+      context: . # 当前目录
+      dockerfile: Dockerfile # 基于 Dockerfile 构建
+    image: lego-backend
+    container_name: lego-backend
+    ports:
+      - 7001:7001
+    env_file:
+      - .env

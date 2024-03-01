@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="description" content="{{desc}}">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {# css 样式重置 #}
+    <link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css">
+    {# js 脚本 #}
+    <script defer="defer" src="http://lego-backend.oss-cn-shanghai.aliyuncs.com/h5-assets/bundle.8d6d3879616eea921947.js"></script>
+    {# 页面 css 样式 #}
+    <link href="http://lego-backend.oss-cn-shanghai.aliyuncs.com/h5-assets/main.8d6d3879616eea921947.css" rel="stylesheet">
+  </head>
+  {# 
+    https://www.eggjs.org/zh-CN/core/view#渲染页面
+    render a template, path related to `app/view`
+    
+    参数2 中的字段可以在参数1模板中通过 {{html}} 使用
+    ? 如果在环境变量中设置了 autoescaping（默认为 true），所有的输出都会自动转义，但可以使用 safe 过滤器，Nunjucks 就不会转义了
+    示例-对内容如实输出：{{html}} => {{html | safe}}
+    示例-对内容进行转义后输出：{{html}} => {{html | escape}}
+    https://mozilla.github.io/nunjucks/cn/templating.html#autoescaping
+  #}
+  <body style="{{bodyStyle}}">{{html | safe}}</body>
+</html>

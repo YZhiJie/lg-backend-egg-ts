@@ -1,0 +1,20 @@
+# 工作流名称
+name: Github Action Demo
+# 监听事件
+on: [push]
+# 工作流中的任务
+jobs: 
+  Check-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "triggered by a ${{ github.event_name }} event"
+      - run: echo "running on a ${{ runner.os }} server hosted by Github"
+      # name: 给之后的步骤设置一个名称
+      - name: check out repo code
+      # https://github.com/marketplace/actions/checkout
+        uses: actions/checkout@v4
+      - run: echo "the ${{ github.repository }} has been cloned"
+      - name: List files in the repo
+        # 执行多个命令
+        run: |
+          ls ${{ github.workspace }}

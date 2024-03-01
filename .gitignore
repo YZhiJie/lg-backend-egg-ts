@@ -1,0 +1,24 @@
+logs/
+npm-debug.log
+node_modules/
+coverage/
+.idea/
+run/
+logs/
+.DS_Store
+.vscode
+*.swp
+*.lock
+# 移除或者注释掉下面一行，因为项目中的 webpack 目录下有 .js 文件
+# *.js
+.eslintcache
+
+app/**/*.js
+test/**/*.js
+config/**/*.js
+app/**/*.map
+test/**/*.map
+config/**/*.map
+
+# 排除 .env，隐藏一些敏感信息（比如服务使用凭证，数据库连接密码 等等）
+.env

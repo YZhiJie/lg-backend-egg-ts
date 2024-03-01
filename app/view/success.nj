@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>授权成功</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <h1>授权成功</h1>
+  <h2>两秒后关闭</h2>
+</body>
+<script>
+  window.onload = function() {
+    setTimeout(() => {
+      const message = {
+        type: 'oauth-token',
+        // token 是通过 render 方法的参数2 传递进来的
+        token: '{{token}}'
+      }
+      // https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage
+      // https://developer.mozilla.org/zh-CN/docs/Web/API/Window/opener
+      // 例如：在 window A 中打开了 window B，B.opener 返回 A
+      // 发送一条消息，可以通过 window.addEventListener('message', ...) 监听到
+      // 限定只有 客户端服务页面窗口能接收到消息事件
+      window.opener.postMessage(message, 'http://localhost:8080')
+      // close 方法只能由 Window.open() 方法打开的窗口的 window 对象来调用
+      // https://developer.mozilla.org/zh-CN/docs/Web/API/Window/close
+      window.close()
+    }, 2000)
+  }
+</script>
+</html>

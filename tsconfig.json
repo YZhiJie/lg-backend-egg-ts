@@ -1,0 +1,15 @@
+{
+  "extends": "@eggjs/tsconfig",
+  "compilerOptions": {
+    "declaration": false,
+    "paths": {
+      // 将 @ 映射为 app
+      "@/*": ["app/*"],
+      "@/module/*": ["app/module/*"]
+    },
+    "baseUrl": ".",
+    // 允许有未使用的变量
+    "noUnusedParameters": false,
+    "noUnusedLocals": false
+  }
+}

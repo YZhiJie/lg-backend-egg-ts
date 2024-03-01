@@ -1,10 +1,3 @@
-# 当前文件的测试提交语句
-# git add .
-# git commit -m "test tags info"
-# git tag -a v0.0.2 -m "version 0.0.2"
-# git push --tags
-# https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#running-your-workflow-only-when-a-push-of-specific-tags-occurs
-# 只有在提交 tag 为如下形式时才会执行 workflow
 name: Tag Test
 on:
   push:

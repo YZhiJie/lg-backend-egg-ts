@@ -1,2 +1,3 @@
 - [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
 - [https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions#workflows](https://docs.github.com/zh/actions/learn-github-actions/understanding-github-actions#workflows)
+- [https://docs.github.com/zh/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository](https://docs.github.com/zh/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)

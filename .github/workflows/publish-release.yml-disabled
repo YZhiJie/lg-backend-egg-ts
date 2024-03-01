@@ -72,6 +72,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PWD }}
+          # 执行 script 遇到错误时，停止继续向下执行
           script_stop: true
           # * 登录阿里云 ACR
           # 停止服务 docker-compose down

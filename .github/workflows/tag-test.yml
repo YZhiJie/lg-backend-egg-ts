@@ -1,0 +1,32 @@
+name: Tag Test
+on:
+  # https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#running-your-workflow-only-when-a-push-of-specific-tags-occurs
+  # 只有在提交 tag 为如下形式时才会执行 workflow
+  push:
+    tags:
+      - 'v*.*.*'
+jobs:
+  test-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # 测试 github context
+      - name: 'test github context info'
+        # https://docs.github.com/zh/actions/learn-github-actions/contexts#github-context
+        # github.ref_name 为 branch name 或 tag name
+        run:
+          echo ${{github.ref}}
+          echo ${{github.ref_name}}
+          echo ${{github.sha}}
+      # 测试查找并且替换
+      - name: Find and Replace
+        # https://github.com/marketplace/actions/find-and-replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        # github.ref_name 为 branch name 或 tag name
+        # 将 {{tag}} 替换为 github.ref_name
+        with: 
+          find: "{{tag}}"
+          replace: ${{github.ref_name}}
+          # 操作的文件
+          include: "docker-compose-online.yml"
+      - run: cat docker-compose-online.yml

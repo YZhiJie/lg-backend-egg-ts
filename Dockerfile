@@ -1,5 +1,5 @@
 # 从上到下逐行执行，前一行是后一行的基础
-FROM node:16-alpine
+FROM node:20-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 # 将 package.json package-lock.json 复制到 /usr/src/app/

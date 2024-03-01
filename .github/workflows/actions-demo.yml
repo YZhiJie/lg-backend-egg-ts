@@ -1,0 +1,32 @@
+# 工作流名称
+name: More Actions Demo
+# 监听事件
+on: [push]
+# 工作流中的任务
+jobs: 
+  # job name
+  build:
+    # 运行系统
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      # @ 后面可以为该库的 版本号/分支名称/tag名称
+      - uses: actions/checkout@v4
+        with: 
+          # 要检查的仓库，默认为当前 push 的仓库
+          repository: 'YZhiJie/hy_airbnb'
+      # 开始一个新步骤
+      - name: List file in the repo
+        # 可以运行多条命令
+        run: |
+          ls ${{ github.workspace }}
+      # https://github.com/marketplace/actions/setup-node-js-environment
+      # 可以初始化 Node 环境
+      - uses: actions/setup-node@v4
+        with: 
+          # 使用的 Node.js 版本
+          node-version: '20'
+      # 测试 Node.js 是否安装成功
+      - run: node -v
+      - run: npm install -g typescript
+      - run: tsc -v

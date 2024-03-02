@@ -4,6 +4,9 @@
 # git tag -a v0.0.1 -m "version 0.0.1"
 # 如果要一次性推送所有本地标签，可以使用以下命令：
 # git push [origin] --tags
+# 示例：git push origin v0.0.1
+# 删除 tags
+# git tag -d v0.0.1 v0.0.2 v0.0.3
 # https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#running-your-workflow-only-when-a-push-of-specific-tags-occurs
 # 只有在提交 tag 为如下形式时才会执行 workflow
 name: Tag Test

@@ -22,7 +22,8 @@
     "remove": "rm -rf run logs node_modules && rm log.txt",
     "build:template:dev": "webpack --config ./webpack/webpack.config.js",
     "build:template:prod": "webpack --config ./webpack/webpack.config.js --env production && npm run uploadPublicFileToOSS",
-    "uploadPublicFileToOSS": "node ./webpack/uploadToOSS.js"
+    "uploadPublicFileToOSS": "node ./webpack/uploadToOSS.js",
+    "release": "release-it"
   },
   "dependencies": {
     "@alicloud/dysmsapi20170525": "^2.0.24",
@@ -81,6 +82,7 @@
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.8.0",
     "prettier": "^3.2.4",
+    "release-it": "^17.1.1",
     "typescript": "5",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4"

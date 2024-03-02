@@ -62,6 +62,15 @@ npm start
 
 当前目录下的文件可以通过 `项目运行地址/public/文件名` 的方式进行访问。
 
+## 生成 package.json
+在当前项目中
+- `cnpm install` 没有生成 `package-lock.json`
+- `npm install` 会生成 `package-lock.json`
+  ```bash
+  # 使用淘宝源安装
+  npm i --registry=https://registry.npmmirror.com
+  ```
+
 ## package.json 常用脚本命令说明
 
 - "tsc": "tsc",

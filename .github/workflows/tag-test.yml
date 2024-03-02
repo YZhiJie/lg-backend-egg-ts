@@ -10,7 +10,7 @@ name: Tag Test
 on:
   push:
     tags:
-      - 'v0.*'
+      - 'v*.*.*'
 jobs:
   test-tags:
     runs-on: ubuntu-latest
